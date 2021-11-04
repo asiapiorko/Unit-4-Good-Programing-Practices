@@ -83,6 +83,6 @@ def updateHand(hand, word):
         word_dictionary[letter] = word_dictionary.get(letter, 0) + 1
     
     # Subtract the values from the given dictionary and the created dictionary
-    res = {key: copied_hand[key] - word_dictionary.get(key, 0)
+    result = {key: copied_hand[key] - word_dictionary.get(key, 0)
                        for key in copied_hand.keys()}
-    return res
+    return result
