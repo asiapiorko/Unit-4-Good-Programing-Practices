@@ -31,18 +31,18 @@ def isValidWord(word, hand, wordList):
     copied_hand = hand.copy()
     word_dictionary = {}
     
-    if word in open(wordList).read():
-    
-        for letter in word:
-            word_dictionary[letter] = word_dictionary.get(letter, 0) + 1
+
+    for letter in word:
+        word_dictionary[letter] = word_dictionary.get(letter, 0) + 1
             
-        result = {key: copied_hand[key] - word_dictionary.get(key, 0)
-                           for key in copied_hand.keys()}
+    result = {key: copied_hand[key] - word_dictionary.get(key, 0)
+                        for key in copied_hand.keys()}
+    print(result)
+    if sum(result.values()) == 0:
+        return True
+    else:
+        return False
         
-        if sum(result.values()) == 0:
-            return True
-        else:
-            return False
-        
-    return False
-    
+
+
+     
