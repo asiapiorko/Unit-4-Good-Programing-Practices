@@ -1,0 +1,45 @@
+
+def playHand(hand, wordList, n):
+    
+    total_score = 0
+    
+    # print("Current Hand: ", end='')
+    
+
+    while(calculateHandlen(hand)>0):
+
+        print("Current Hand: ", end='')
+        
+        displayHand(hand)
+        
+        value = input("Enter word, or a '.'' to indicate that you are finished: ")
+        
+        if value == '.':
+            
+            print("Goodbye! Total score: ", total_score, "points.\n")
+            
+            break
+        
+        if isValidWord(value, hand, wordList):
+                  
+            score = getWordScore(value, n)
+
+            total_score += score
+
+            print(value, "earned", score, "points. Total: ", total_score, "points\n")
+
+            hand = updateHand(hand, value)
+        
+        else:
+        
+            print("Invalid word, please try again.\n")
+
+            
+    else:     
+        print("Run out of letters. Total score: ", total_score, "points.") 
+
+
+"""
+wordList = loadWords()
+playHand({'h':1, 'i':1, 'c':1, 'z':1, 'm':2, 'a':1}, wordList, 7)
+"""
