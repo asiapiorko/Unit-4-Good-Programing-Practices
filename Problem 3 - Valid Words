@@ -16,7 +16,7 @@ the empty string ('') is not a valid word - if you code this function correctly,
 Fill in the code for isValidWord in ps4a.py and be sure you've passed the appropriate tests in test_ps4a.py before pasting your function definition here.
 """
 
-def isValidWord(word, hand, wordList):
+def isValidWord(word, hand):
     """
     Returns True if word is in the wordList and is entirely
     composed of letters in the hand. Otherwise, returns False.
