@@ -1,0 +1,88 @@
+import random
+"""
+Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+Current Hand: p z u t t t o
+Enter word, or a "." to indicate that you are finished: tot
+"tot" earned 9 points. Total: 9 points
+"""
+def playGame(wordList):
+    """
+    Allow the user to play an arbitrary number of hands.
+ 
+    1) Asks the user to input 'n' or 'r' or 'e'.
+      * If the user inputs 'n', let the user play a new (random) hand.
+      * If the user inputs 'r', let the user play the last hand again.
+      * If the user inputs 'e', exit the game.
+      * If the user inputs anything else, tell them their input was invalid.
+ 
+    2) When done playing the hand, repeat from step 1
+    """
+    
+    hand = None
+    
+    value = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: n ")
+
+
+    while value != 'e':
+
+       
+        if value == 'r':
+
+            if hand != None:
+
+                playHand(hand, wordList, HAND_SIZE)
+                print(hand)
+
+            else:
+                
+                print('You have not played a hand yet. Please play a new hand first!')
+                value = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+                
+        if value == 'n':
+            
+            hand = dealHand(HAND_SIZE)
+            
+            total_score = 0
+
+    
+            while(calculateHandlen(hand)>0):
+
+                print("Current Hand: ", end='')
+
+                displayHand(hand)
+
+                value = input("Enter word, or a '.'' to indicate that you are finished: ")
+
+                if value == '.':
+
+                    print("Goodbye! Total score: ", total_score, "points.\n")
+
+                    break
+
+                if isValidWord(value, hand, wordList):
+
+                    score = getWordScore(value, HAND_SIZE)
+
+                    total_score += score
+
+                    print(value, "earned", score, "points. Total: ", total_score, "points\n")
+
+                    hand = updateHand(hand, value)
+
+                else:
+
+                    print("Invalid word, please try again.\n")
+
+
+            else:     
+                print("Run out of letters. Total score: ", total_score, "points.") 
+                
+        break
+        
+        
+        
+wordList = loadWords()
+
+
+playGame(wordList)
+
