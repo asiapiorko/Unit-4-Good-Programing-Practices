@@ -12,6 +12,8 @@ def calculateHandlen(hand):
     hand: dictionary (string int)
     returns: integer
     """
-    # TO DO... <-- Remove this comment when you code this function
+    handLen = 0
+    for i in hand:
+        handLen = handLen + hand.get(i,0)
 
-    return len(hand)
+    return handLen
