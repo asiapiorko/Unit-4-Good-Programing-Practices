@@ -57,6 +57,8 @@ You may wish to review the ".copy" method of Python dictionaries (review this an
 
 Your implementation of updateHand should be short (ours is 4 lines of code). It does not need to call any helper functions.
 """
+# deepcopy -> przetestować
+
 
 def updateHand(hand, word):
     """
